@@ -23,8 +23,14 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <header class="flex flex-row py-3 sm:px-32 border-b-1 border-gray-200">
+      <img class="w-32 mx-auto sm:mx-0" src="logo.svg" alt="Logo">
+    </header>
+
+    <main class="container mx-auto mt-2 px-0 sm:px-20 flex">
+      <div class="flex p-4 w-full">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

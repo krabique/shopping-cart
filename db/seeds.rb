@@ -10,10 +10,27 @@
 
 [
   {
-    title: 'Wireless speaker',
+    title: 'Wireless speaker, Goodyear',
     price: 100,
-    image_url: 'wireless-speaker.jpg'
+    image_url: 'wireless-speaker.png'
+  },
+  {
+    title: "Women's Home Suit, Sweet Dreams",
+    price: 25,
+    image_url: 'pajamas.png'
+  },
+  {
+    title: "Raincoat, SwissOak",
+    price: 50,
+    image_url: 'raincoat.png'
   }
 ].each do |product|
   Product.create!(title: product[:title], price: product[:price], image_url: product[:image_url])
 end
+
+
+carts_products_attributes = Product.all.map.with_index do |product, index|
+  { product: product, quantity: index + 1 }
+end
+
+Cart.create!(carts_products_attributes: carts_products_attributes)
