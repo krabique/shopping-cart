@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ show update destroy ]
+  before_action :set_cart, only: %i[ update destroy ]
 
   def show
+    @cart = Cart.includes(carts_products: :product).find(cart_id)
   end
 
   def update
@@ -15,7 +16,11 @@ class CartsController < ApplicationController
   private
 
   def set_cart
-    @cart = params[:id] ? Cart.find(params.exepect(:id)) : Cart.first
+    @cart = Cart.find(cart_id)
+  end
+
+  def cart_id
+    @cart_id ||= params[:id] || Cart.first.id
   end
 
   def cart_params
