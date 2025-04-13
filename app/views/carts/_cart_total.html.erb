@@ -1,6 +1,31 @@
 <%= turbo_frame_tag "cart_total" do %>
-  <div class="mt-8 w-full border border-gray-300 rounded-lg p-4 flex justify-between items-center">
-    <span class="font-bold text-lg">Total</span>
-    <span class="font-bold text-2xl">$<%= cart.carts_products.sum { it.price * it.quantity } %></span>
+  <div class="mt-8 w-full border border-gray-200 rounded-lg p-6 flex flex-col gap-4 text-gray-800">
+
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-gray-700"><%= pluralize(cart.carts_products.sum(&:quantity), "item") %></span>
+      <span class="text-gray-700 font-bold">$<%= cart.total %></span>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <span class="text-sm text-gray-700">Move the slider to specify the discount amount</span>
+      <span class="text-green-600 font-bold">$<%= cart.discount || 0 %></span>
+    </div>
+
+    <%= form_with model: cart, url: cart_path, method: :patch, data: { turbo_stream: true } do |f| %>
+      <%= f.range_field :discount,
+        class: "w-full discount-slider",
+        value: cart.discount || 0,
+        in: 0..[100, cart.total].min,
+        step: 1,
+        onchange: "this.form.requestSubmit()" %>
+    <% end %>
+
+    <hr class="border-t border-gray-200 my-2" />
+
+    <div class="flex justify-between items-center font-bold text-xl">
+      <span>Total</span>
+      <span>$<%= cart.discounted_total %></span>
+    </div>
+
   </div>
 <% end %>

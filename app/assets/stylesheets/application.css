@@ -8,3 +8,28 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ input[type="range"].discount-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].discount-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  background: #16a34a; /* Tailwind green-600 */
+  cursor: pointer;
+  margin-top: -16px; /* vertical alignment */
+}
+
+input[type="range"].discount-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #16a34a; /* Tailwind gray-200 */
+  border-radius: 9999px;
+}
