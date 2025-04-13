@@ -1,24 +1,12 @@
 <div class="w-full">
   <div class="inline-flex items-center justify-between w-full">
     <h1 class="text-4xl">Cart</h1>
-    <% if @cart.carts_products.any? %>
-      <%= button_to "Reset", cart_path, method: :delete, params: { cart_id: @cart.id }, form: { id: "reset_button", data: { turbo_stream: true, turbo_confirm: "Are you sure you want to reset the cart?" } }, class: "text-gray-500 hover:text-gray-800 cursor-pointer" %>
-    <% end %>
+    <%= render "reset_button", cart: @cart %>
   </div>
 
-  <% if @cart.carts_products.any? %>
-    <div id="cart_products" class="flex flex-col">
-      <% @cart.carts_products.each do |carts_product| %>
-        <%= render "carts_products/carts_product", carts_product: carts_product %>
-      <% end %>
-    </div>
-
-    <%= render "cart_total", cart: @cart %>
-
-    <div id="place_order_button" class="mt-8 w-full">
-      <%= button_to "Place Order", cart_path, method: :delete, params: { cart_id: @cart.id }, form: { data: { turbo_stream: true } }, class: "w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-500 transition-all duration-200" %>
-    </div>
-  <% else %>
-    <%= render "empty_cart" %>
+  <%= turbo_frame_tag "cart_container" do %>
+    <%= render "cart_container", cart: @cart %>
   <% end %>
+
+  <%= render "add_items_buttons", cart: @cart %>
 </div>

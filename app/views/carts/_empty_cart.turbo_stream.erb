@@ -1,4 +1,4 @@
 <%= turbo_stream.replace "cart_products", partial: "carts/empty_cart" %>
-<%= turbo_stream.remove "reset_button" %>
+<%= turbo_stream.replace "reset_button", partial: "carts/reset_button", locals: { cart: @cart } %>
 <%= turbo_stream.remove "cart_total" %>
 <%= turbo_stream.remove "place_order_button" %>

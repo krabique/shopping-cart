@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "cart_container" do %>
+  <% if cart.carts_products.any? %>
+    <%= render "carts/cart_products", cart: cart %>
+    <%= render "carts/cart_total", cart: cart %>
+    <%= render "carts/place_order_button", cart: cart %>
+  <% else %>
+    <%= render "carts/empty_cart" %>
+  <% end %>
+<% end %>

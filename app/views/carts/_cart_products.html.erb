@@ -1,0 +1,5 @@
+<div id="cart_products" class="flex flex-col">
+  <% cart.carts_products.each do |carts_product| %>
+    <%= render "carts_products/carts_product", carts_product: carts_product %>
+  <% end %>
+</div>

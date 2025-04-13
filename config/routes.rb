@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root "carts#show"
 
   resource :cart, only: [:show, :update, :destroy] do
-    resources :carts_products, only: [:update, :destroy]
+    resources :carts_products, only: [:create, :update, :destroy]
   end
 end
