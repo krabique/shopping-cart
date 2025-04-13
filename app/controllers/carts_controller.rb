@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    # @cart.cart_products.destroy_all
+    @cart.cart_products.destroy_all
   end
 
   private

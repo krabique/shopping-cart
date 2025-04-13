@@ -16,7 +16,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_102520) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "carts_products", id: false, force: :cascade do |t|
+  create_table "carts_products", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "product_id", null: false
     t.integer "quantity", null: false
