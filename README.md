@@ -35,4 +35,4 @@ And visit http://127.0.0.1:3000/
 - There was no mention of other pages, so I just added some buttons at the bottom of the cart to add new items
 - I was not able to export icons from figma, so I used screenshots or very similar SVGs (trash bin for example)
 - It should adapt to different screen sizes
-- It doesn't include any tests, I would normally always add tests, but I ran out of time
+- I added images for products into `/public` for simplicity
