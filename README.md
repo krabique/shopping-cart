@@ -29,7 +29,7 @@ bin/rails s
 ```
 And visit http://127.0.0.1:3000/
 
-## Commnents and assumptions
+## Comments and assumptions
 
 - It assumes that there is only one user ever, to save some time
 - There was no mention of other pages, so I just added some buttons at the bottom of the cart to add new items
