@@ -1,16 +1,16 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ update destroy ]
+  before_action :set_cart, only: %i[ destroy ]
 
   def show
     @cart = Cart.includes(carts_products: :product).find(cart_id)
   end
 
-  def update
-    @cart.update(cart_params)
-  end
-
   def destroy
     @cart.empty_cart
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @cart }
+    end
   end
 
   private
@@ -21,9 +21,5 @@ class CartsController < ApplicationController
 
   def cart_id
     @cart_id ||= params[:id] || Cart.first.id
-  end
-
-  def cart_params
-    params.fetch(:cart, {})
   end
 end

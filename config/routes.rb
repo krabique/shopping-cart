@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root "carts#show"
 
-  resource :carts
+  resource :cart, only: [:show, :destroy] do
+    resources :carts_products, only: [:update, :destroy]
+  end
 end

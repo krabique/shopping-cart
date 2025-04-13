@@ -1,0 +1,6 @@
+<% if @cart.carts_products.any? %>
+  <%= turbo_stream.remove @carts_product %>
+  <%= turbo_stream.replace "cart_total", partial: "carts/cart_total", locals: { cart: @cart } %>
+<% else %>
+  <%= render "carts/empty_cart" %>
+<% end %>

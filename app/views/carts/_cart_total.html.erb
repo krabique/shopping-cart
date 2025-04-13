@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "cart_total" do %>
+  <div class="mt-8 w-full border border-gray-300 rounded-lg p-4 flex justify-between items-center">
+    <span class="font-bold text-lg">Total</span>
+    <span class="font-bold text-2xl">$<%= cart.carts_products.sum { it.price * it.quantity } %></span>
+  </div>
+<% end %>
